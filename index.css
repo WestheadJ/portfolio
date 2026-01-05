@@ -1,23 +1,46 @@
+/* Lights */
+:root {
+    --bg: #ffffff;
+    --text: #111111;
+}
+
+/* Dark colours */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #111111;
+        --text: #ffffff;
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+body {
+    background-color: var(--bg);
+    font-family: 'Lexend', sans-serif;
+}
+
 .hero {
     height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background: #222;
     color: white;
     font-size: 3rem;
+    font-family: "Lexend", sans-serif;
 }
+
 
 nav {
     width: 100%;
     background: #333;
     color: white;
+    height: 50px;
 }
 
 nav ul {
@@ -25,16 +48,99 @@ nav ul {
     list-style: none;
     padding: 1rem;
     gap: 2rem;
+
 }
 
 .sticky {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000;
+    z-index: 2;
 }
 
-.content {
+#about-me-content {
     padding: 2rem;
-    min-height: 200vh;
+    height: 400px;
+    color: white;
+    margin: 9%;
+    border: white 4px solid;
+    border-radius: 20px;
+    scroll-margin-top: 70px;
+    /* space above when scrolled to */
+}
+
+#circle {
+    position: absolute;
+    bottom: 50px;
+    cursor: pointer;
+    border-radius: 100%;
+    border: #3f3f3f solid 3px;
+    width: 90px;
+    height: 90px;
+    z-index: 1;
+
+}
+
+#circle:hover {
+    background-color: #ffffff;
+}
+
+#line {
+    height: 300px;
+    width: 5px;
+    background-color: #ffffff;
+    position: absolute;
+    bottom: -22%;
+    z-index: 100;
+}
+
+#nav-spacer {
+    height: 0;
+}
+
+#nav-spacer.active {
+    height: 50px;
+    /* same as navbar height */
+}
+
+#about-me-content h2 {
+    display: inline-block;
+    /* shrink to content width */
+    position: relative;
+    top: -1.8em;
+    /* lifts the heading over the border */
+    padding: 0 10px;
+    /* space around text */
+    background-color: var(--bg);
+    /* same as body background */
+    color: white;
+    /* text color */
+    font-size: 2rem;
+}
+
+#about-me-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* push text left, image right */
+
+    width: 100%;
+    gap: 20px;
+}
+
+#about-me-container p {
+    flex: 1;
+    /* take up remaining space on the left */
+}
+
+#about-me-container img {
+    max-height: 300px;
+    /* optional: constrain height */
+    width: auto;
+    object-fit: contain;
+    border-radius: 100%;
+}
+
+section {
+    font-size: larger;
 }
