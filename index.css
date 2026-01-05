@@ -217,7 +217,7 @@ section {
 
 #tab-underline {
     position: absolute;
-    bottom: 0;
+    bottom: -15px;
     /* stick to the bottom of the tab bar */
     left: 0;
     height: 3px;
@@ -225,4 +225,24 @@ section {
     width: 100px;
     /* initial width matching first tab */
     transition: left 0.4s ease, width 0.4s ease;
+}
+
+#personal-projects-container {
+    margin-left: 100px;
+    margin-right: 100px;
+    display: none;
+}
+
+.personal-projects-div {
+    margin-top: 40px;
+}
+
+.university-projects-div {
+    margin-top: 40px;
+}
+
+#university-projects-container {
+    margin-left: 100px;
+    margin-right: 100px;
+    display: block;
 }

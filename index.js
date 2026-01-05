@@ -58,6 +58,8 @@ circle.addEventListener("click", () => {
 const underline = document.getElementById("tab-underline");
 const personalTab = document.getElementById("projects-tab-personal");
 const universityTab = document.getElementById("projects-tab-university");
+const personalTabContainer = document.getElementById("personal-projects-container");
+const universityTabContainer = document.getElementById("university-projects-container");
 
 function moveUnderline(tab) {
     const rect = tab.getBoundingClientRect();
@@ -67,6 +69,17 @@ function moveUnderline(tab) {
 
     underline.style.left = left + "px";
     underline.style.width = width + "px";
+    moveContainer(tab);
+}
+
+function moveContainer(tab) {
+    if (tab === personalTab) {
+        personalTabContainer.style.display = "block";
+        universityTabContainer.style.display = "none";
+    } else {
+        personalTabContainer.style.display = "none";
+        universityTabContainer.style.display = "block";
+    }
 }
 
 // Initialize
