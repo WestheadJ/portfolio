@@ -54,3 +54,24 @@ circle.addEventListener("click", () => {
 
     requestAnimationFrame(animateScroll);
 });
+
+const underline = document.getElementById("tab-underline");
+const personalTab = document.getElementById("projects-tab-personal");
+const universityTab = document.getElementById("projects-tab-university");
+
+function moveUnderline(tab) {
+    const rect = tab.getBoundingClientRect();
+    const containerRect = tab.parentElement.getBoundingClientRect();
+    const left = rect.left - containerRect.left; // relative to tab bar
+    const width = rect.width;
+
+    underline.style.left = left + "px";
+    underline.style.width = width + "px";
+}
+
+// Initialize
+moveUnderline(personalTab);
+
+// Click handlers
+personalTab.addEventListener("click", () => moveUnderline(personalTab));
+universityTab.addEventListener("click", () => moveUnderline(universityTab));
