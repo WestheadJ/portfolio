@@ -69,22 +69,32 @@ function moveUnderline(tab) {
 
     underline.style.left = left + "px";
     underline.style.width = width + "px";
-    moveContainer(tab);
 }
 
-function moveContainer(tab) {
-    if (tab === personalTab) {
-        personalTabContainer.style.display = "block";
-        universityTabContainer.style.display = "none";
-    } else {
-        personalTabContainer.style.display = "none";
-        universityTabContainer.style.display = "block";
-    }
+moveUnderline(personalTab); // Initialize underline position
+
+function showPersonal() {
+    personalTabContainer.classList.remove("slide-out-left");
+    personalTabContainer.classList.add("slide-in-right");
+
+    universityTabContainer.classList.remove("slide-in-right");
+    universityTabContainer.classList.add("slide-out-left");
 }
 
-// Initialize
-moveUnderline(personalTab);
+function showUniversity() {
+    personalTabContainer.classList.remove("slide-in-right");
+    personalTabContainer.classList.add("slide-out-left");
 
-// Click handlers
-personalTab.addEventListener("click", () => moveUnderline(personalTab));
-universityTab.addEventListener("click", () => moveUnderline(universityTab));
+    universityTabContainer.classList.remove("slide-out-left");
+    universityTabContainer.classList.add("slide-in-right");
+}
+
+personalTab.addEventListener("click", () => {
+    moveUnderline(personalTab);
+    showPersonal();
+});
+
+universityTab.addEventListener("click", () => {
+    moveUnderline(universityTab);
+    showUniversity();
+});

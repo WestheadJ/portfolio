@@ -227,22 +227,32 @@ section {
     transition: left 0.4s ease, width 0.4s ease;
 }
 
+#personal-projects-container,
+#university-projects-container {
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    width: 100%;
+}
+
+/* initial positions */
 #personal-projects-container {
-    margin-left: 100px;
-    margin-right: 100px;
-    display: none;
-}
-
-.personal-projects-div {
-    margin-top: 40px;
-}
-
-.university-projects-div {
-    margin-top: 40px;
+    transform: translateX(0);
+    /* visible */
+    opacity: 1;
 }
 
 #university-projects-container {
-    margin-left: 100px;
-    margin-right: 100px;
-    display: block;
+    transform: translateX(100%);
+    /* off to the right */
+    opacity: 0;
+}
+
+/* sliding classes */
+.slide-out-left {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.slide-in-right {
+    transform: translateX(0);
+    opacity: 1;
 }
