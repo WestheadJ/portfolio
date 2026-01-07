@@ -93,6 +93,16 @@ body {
     display: none;
 }
 
+/* Mobile-friendly typing animation */
+@keyframes mobile-typing {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.terminal-section.mobile-typing {
+    animation: mobile-typing 0.3s ease forwards;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     body {
@@ -108,9 +118,9 @@ body {
         max-width: calc(100vw - 40px);
     }
     
-    /* Disable typing animation on mobile to prevent glitching */
+    /* Use mobile-friendly animation */
     .terminal-section.terminal-typing {
-        animation: none !important;
+        animation: mobile-typing 0.3s ease forwards !important;
         white-space: pre-wrap !important;
         overflow: visible !important;
     }
