@@ -50,19 +50,28 @@ class TerminalAnimator {
         if (cursor) cursor.classList.remove('idle');
         if (cursor) cursor.classList.add('typing');
 
-        for (let i = 0; i < text.length; i++) {
-            if (this.skipped) {
-                element.textContent = text;
-                break;
+        // Check if mobile - disable typing animation for better performance
+        const isMobile = window.innerWidth <= 768;
+        if (isMobile) {
+            element.textContent = text;
+            // Small delay for effect
+            await new Promise(resolve => setTimeout(resolve, 300));
+        } else {
+            // Desktop typing animation
+            for (let i = 0; i < text.length; i++) {
+                if (this.skipped) {
+                    element.textContent = text;
+                    break;
+                }
+                element.textContent += text[i];
+
+                // Add random delay for realistic typing
+                const delay = text[i] === ' ' ?
+                    this.config.typingSpeed :
+                    this.config.typingSpeed + getRandomIntInclusive(-20, 20);
+
+                await new Promise(resolve => setTimeout(resolve, delay));
             }
-            element.textContent += text[i];
-
-            // Add random delay for realistic typing
-            const delay = text[i] === ' ' ?
-                this.config.typingSpeed :
-                this.config.typingSpeed + getRandomIntInclusive(-20, 20);
-
-            await new Promise(resolve => setTimeout(resolve, delay));
         }
 
         // Re-enable cursor blink

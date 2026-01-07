@@ -105,10 +105,27 @@ body {
         word-wrap: break-word;
         overflow-wrap: break-word;
         white-space: pre-wrap;
+        max-width: calc(100vw - 40px);
+    }
+    
+    /* Disable typing animation on mobile to prevent glitching */
+    .terminal-section.terminal-typing {
+        animation: none !important;
+        white-space: pre-wrap !important;
+        overflow: visible !important;
     }
     
     #skip-instruction {
         margin-left: 10px;
         font-size: 11px;
+    }
+    
+    #first-line {
+        margin-left: 10px;
+        margin-right: 10px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: pre-wrap;
+        max-width: calc(100vw - 40px);
     }
 }
