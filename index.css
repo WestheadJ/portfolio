@@ -1,4 +1,114 @@
 body {
     background: #000000;
-    background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(18, 56, 10, 1) 50%, rgba(0, 0, 0, 1) 100%);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgb(13, 38, 8) 45%, rgb(13, 38, 8) 65%, rgba(0, 0, 0, 1) 100%);
+
+    color: #00ff88;
+    text-shadow: 0 0 8px #00ff88;
+    font-family: "Roboto Mono", monospace;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.terminal-cursor {
+
+    width: 10px;
+    height: 20px;
+    margin-top: 2px;
+    background: #00ff00;
+    box-shadow: 0 0 8px #00ff00;
+
+    animation: 1s infinite terminal-blink;
+}
+
+@keyframes terminal-blink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
+
+#first-line {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+/* Terminal section styling */
+.terminal-section {
+    margin-left: 20px;
+    margin-top: 10px;
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.terminal-typing {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 2s steps(40, end);
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Cursor states */
+.terminal-cursor.typing {
+    animation: none;
+}
+
+.terminal-cursor.idle {
+    animation: 1s infinite terminal-blink;
+}
+
+/* Skip instruction styling */
+#skip-instruction {
+    margin-left: 20px;
+    margin-top: 10px;
+    opacity: 0.7;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+#skip-instruction:hover {
+    opacity: 1;
+}
+
+#skip-instruction.hidden {
+    display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body {
+        font-size: 12px;
+    }
+    
+    .terminal-section {
+        margin-left: 10px;
+        margin-right: 10px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: pre-wrap;
+    }
+    
+    #skip-instruction {
+        margin-left: 10px;
+        font-size: 11px;
+    }
 }
