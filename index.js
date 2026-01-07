@@ -1,4 +1,5 @@
 // Terminal configuration variables
+import commandParser from "./parser.js";
 const terminalConfig = {
     prompt: "$Visitor@JamesWestheadPortfolio > $ ~/",
     typingSpeed: getRandomIntInclusive(20, 70), // ms per character
@@ -19,11 +20,17 @@ const terminalConfig = {
         {
             type: "contact",
             content: "Contact: james@example.com | GitHub: @jameswesthead"
+        },
+        {
+            type: "help",
+            content: "Explore my page using the terminal! Type 'help' to see a list of commands."
         }
     ]
+
 };
 
 const terminalContainer = document.getElementById("terminal-container");
+
 
 function getRandomIntInclusive(min, max) {
     const minCeiled = Math.ceil(min);
@@ -53,7 +60,7 @@ class TerminalAnimator {
         // Use character-by-character typing for both, but optimize for mobile
         const isMobile = window.innerWidth <= 768;
         const mobileSpeed = isMobile ? 30 : this.config.typingSpeed;
-        
+
         // Create a span wrapper for better mobile text handling
         if (isMobile) {
             element.style.display = 'inline-block';
@@ -66,12 +73,12 @@ class TerminalAnimator {
                 element.textContent = text;
                 break;
             }
-            
+
             element.textContent += text[i];
 
             // Faster typing on mobile, with smaller random variations
-            const delay = text[i] === ' ' ? 
-                mobileSpeed : 
+            const delay = text[i] === ' ' ?
+                mobileSpeed :
                 mobileSpeed + (isMobile ? getRandomIntInclusive(-10, 10) : getRandomIntInclusive(-20, 20));
 
             await new Promise(resolve => setTimeout(resolve, Math.max(delay, 20)));
@@ -113,11 +120,11 @@ class TerminalAnimator {
     skip() {
         this.skipped = true;
         this.hideSkipInstruction();
-        
+
         // Clear any existing sections that might have been partially created
         const existingSections = this.container.querySelectorAll('.terminal-section');
         existingSections.forEach(section => section.remove());
-        
+
         // Show all sections from the beginning
         this.config.sections.forEach(section => {
             const sectionElement = document.createElement("div");
@@ -126,14 +133,14 @@ class TerminalAnimator {
             sectionElement.textContent = this.config.prompt + " " + section.content;
             this.container.appendChild(sectionElement);
         });
-        
+
         // Re-enable cursor
         const cursor = document.querySelector('.terminal-cursor');
         if (cursor) {
             cursor.classList.remove('typing');
             cursor.classList.add('idle');
         }
-        
+
         // Reset typing state
         this.isTyping = false;
     }
@@ -149,16 +156,24 @@ class TerminalAnimator {
             this.currentSection = i;
             if (this.skipped) break;
             await this.createTerminalSection(this.config.sections[i], i);
-            
+
             // Check if skipped during the section creation
             if (this.skipped) break;
         }
-        
+
         // Hide skip instruction when animation completes
         if (!this.skipped) {
             this.hideSkipInstruction();
         }
+        addInput(this.container);
     }
+}
+
+function addInput(container) {
+    const inputElement = document.createElement("div");
+    inputElement.classList.add("terminal-input");
+    inputElement.innerHTML = `<span class="terminal-prompt">${terminalConfig.prompt}<input type="text" class="terminal-input-field" autofocus /></span><span class="terminal-cursor idle">|</span>`;
+    container.appendChild(inputElement);
 }
 
 // Initialize and start the terminal animation
@@ -167,12 +182,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add skip functionality
     const skipInstruction = document.getElementById('skip-instruction');
-    
+
     // Skip on Enter key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' && animator.isTyping) {
             e.preventDefault();
             animator.skip();
+        }
+        else if (e.key === 'Enter') {
+            const inputField = document.querySelector('.terminal-input-field');
+            if (inputField) {
+                console.log(commandParser(inputField.value, inputField));
+                inputField.value = "";
+            }
+        }
+        else {
+            const inputField = document.querySelector('.terminal-input-field');
+
+            if (inputField) {
+                inputField.focus();
+
+            }
         }
     });
 
