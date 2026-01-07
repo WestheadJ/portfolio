@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Demo</title>
+    <link rel="stylesheet" href="terminal-vars.css">
+    <style>
+        body {
+            background: #000;
+            margin: 0;
+            padding: 40px;
+            font-family: var(--terminal-font);
+        }
+        
+        .demo-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .demo-section {
+            margin-bottom: 40px;
+        }
+        
+        .command-line {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .prompt {
+            color: var(--terminal-fg);
+            margin-right: 10px;
+        }
+        
+        .output {
+            margin-left: 20px;
+            color: var(--terminal-fg-dim);
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 40px;
+            height: 10px;
+        }
+        
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: var(--terminal-fg);
+            border-radius: 50%;
+            animation: 1s terminal-blink infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <!-- Main Terminal Window -->
+        <div class="terminal terminal-frame">
+            <div class="terminal-header">
+                <span class="terminal-status terminal-status-active"></span>
+                TERMINAL v1.0
+            </div>
+            
+            <div class="demo-section">
+                <h2 class="terminal-text-bright">Welcome to Terminal</h2>
+                <p class="terminal-text">Type commands below or use the interface.</p>
+            </div>
+            
+            <!-- Command Line Interface -->
+            <div class="demo-section">
+                <div class="command-line">
+                    <span class="prompt">$</span>
+                    <input type="text" class="terminal-input" placeholder="Enter command..." style="flex: 1;">
+                    <span class="terminal-cursor"></span>
+                </div>
+                
+                <div class="output">
+                    <div class="terminal-text">Last login: Wed Jan 7 10:30:00 on tty1</div>
+                    <div class="terminal-text-dim">System ready...</div>
+                </div>
+            </div>
+            
+            <!-- Interactive Elements -->
+            <div class="demo-section">
+                <p class="terminal-text">Available commands:</p>
+                <button class="terminal-button" onclick="runCommand('help')">HELP</button>
+                <button class="terminal-button" onclick="runCommand('status')">STATUS</button>
+                <button class="terminal-button" onclick="runCommand('scan')">SCAN</button>
+                <button class="terminal-button" onclick="runCommand('connect')">CONNECT</button>
+            </div>
+            
+            <!-- Status Display -->
+            <div class="demo-section">
+                <div class="terminal-text">
+                    <span class="terminal-status terminal-status-active"></span>
+                    System: ONLINE
+                </div>
+                <div class="terminal-text-dim">
+                    <span class="terminal-status terminal-status-inactive"></span>
+                    Network: STANDBY
+                </div>
+            </div>
+            
+            <!-- Output Area -->
+            <div class="demo-section terminal-scrollbar" style="max-height: 200px; overflow-y: auto;">
+                <div id="output">
+                    <div class="terminal-text">[INFO] Terminal initialized</div>
+                    <div class="terminal-text-dim">[DEBUG] Loading modules...</div>
+                    <div class="terminal-text">[SUCCESS] All systems operational</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Alternative Terminal Styles -->
+        <div class="demo-section">
+            <h3 class="terminal-text-bright">Alternative Terminal</h3>
+            <div class="terminal" style="background: var(--terminal-bg-tint);">
+                <div class="terminal-text terminal-glitch">GLITCH TEXT</div>
+                <div class="terminal-text terminal-pulse">PULSING TEXT</div>
+                <div class="terminal-text">
+                    <a href="#" class="terminal-link">TERMINAL LINK</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Simple Terminal -->
+        <div class="demo-section">
+            <h3 class="terminal-text-bright">Minimal Terminal</h3>
+            <div class="terminal" style="padding: 10px; border: var(--terminal-border-dim);">
+                <div class="command-line">
+                    <span class="prompt">></span>
+                    <input type="text" class="terminal-input" placeholder="Minimal input..." style="flex: 1;">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function runCommand(cmd) {
+            const output = document.getElementById('output');
+            const timestamp = new Date().toLocaleTimeString();
+            
+            const responses = {
+                'help': `[${timestamp}] Available commands: help, status, scan, connect`,
+                'status': `[${timestamp}] System Status: All systems operational`,
+                'scan': `[${timestamp}] Scanning network... <span class="loading"></span>`,
+                'connect': `[${timestamp}] Establishing connection... <span class="terminal-status terminal-status-active"></span> Connected`
+            };
+            
+            const newLine = document.createElement('div');
+            newLine.className = 'terminal-text';
+            newLine.innerHTML = responses[cmd] || `[${timestamp}] Unknown command: ${cmd}`;
+            
+            output.appendChild(newLine);
+            output.scrollTop = output.scrollHeight;
+            
+            // Add some terminal effects
+            newLine.style.animation = 'terminal-pulse 2s';
+        }
+        
+        // Add enter key support for input
+        document.querySelector('.terminal-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const cmd = this.value.trim();
+                if (cmd) {
+                    runCommand(cmd);
+                    this.value = '';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
