@@ -50,42 +50,31 @@ class TerminalAnimator {
         if (cursor) cursor.classList.remove('idle');
         if (cursor) cursor.classList.add('typing');
 
-        // Check if mobile - use word-by-word typing instead of character-by-character
+        // Use character-by-character typing for both, but optimize for mobile
         const isMobile = window.innerWidth <= 768;
+        const mobileSpeed = isMobile ? 30 : this.config.typingSpeed;
+        
+        // Create a span wrapper for better mobile text handling
         if (isMobile) {
-            // Mobile: type word by word to prevent glitching
-            const words = text.split(' ');
-            for (let i = 0; i < words.length; i++) {
-                if (this.skipped) {
-                    element.textContent = text;
-                    break;
-                }
-                
-                if (i === 0) {
-                    element.textContent = words[i];
-                } else {
-                    element.textContent += ' ' + words[i];
-                }
-                
-                // Shorter delay for mobile
-                await new Promise(resolve => setTimeout(resolve, 150));
-            }
-        } else {
-            // Desktop: character-by-character typing
-            for (let i = 0; i < text.length; i++) {
-                if (this.skipped) {
-                    element.textContent = text;
-                    break;
-                }
-                element.textContent += text[i];
+            element.style.display = 'inline-block';
+            element.style.wordBreak = 'break-word';
+            element.style.maxWidth = 'calc(100vw - 60px)';
+        }
 
-                // Add random delay for realistic typing
-                const delay = text[i] === ' ' ?
-                    this.config.typingSpeed :
-                    this.config.typingSpeed + getRandomIntInclusive(-20, 20);
-
-                await new Promise(resolve => setTimeout(resolve, delay));
+        for (let i = 0; i < text.length; i++) {
+            if (this.skipped) {
+                element.textContent = text;
+                break;
             }
+            
+            element.textContent += text[i];
+
+            // Faster typing on mobile, with smaller random variations
+            const delay = text[i] === ' ' ? 
+                mobileSpeed : 
+                mobileSpeed + (isMobile ? getRandomIntInclusive(-10, 10) : getRandomIntInclusive(-20, 20));
+
+            await new Promise(resolve => setTimeout(resolve, Math.max(delay, 20)));
         }
 
         // Re-enable cursor blink
