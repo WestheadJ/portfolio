@@ -100,6 +100,30 @@ body {
     display: none;
 }
 
+.terminal-input-field {
+    background: transparent;
+    border: none;
+    width: auto;
+    min-width: 10px;
+    margin-top: 5px;
+    color: #00ff88;
+    font-family: "Roboto Mono", monospace;
+    font-size: 14px;
+    text-shadow: 0 0 8px #00ff88;
+    field-sizing: content;
+}
+
+.terminal-input-field:focus {
+    outline: none;
+}
+
+.terminal-input {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     body {
@@ -130,29 +154,4 @@ body {
         white-space: pre-wrap;
         max-width: calc(100vw - 40px);
     }
-}
-
-.terminal-input-field {
-    background: transparent;
-    border: none;
-    width: auto;
-    min-width: 20px;
-    margin-top: 5px;
-    color: #00ff88;
-    font-family: "Roboto Mono", monospace;
-    font-size: 14px;
-    text-shadow: 0 0 8px #00ff88;
-    field-sizing: content;
-    margin-left: 20px;
-}
-
-.terminal-input-field:focus {
-    outline: none;
-}
-
-.terminal-input {
-    margin-left: 20px;
-    display: flex;
-    flex-direction: row;
-    margin-top: 5px;
 }

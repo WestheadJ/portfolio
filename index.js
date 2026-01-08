@@ -1,9 +1,17 @@
-// Terminal configuration variables
 import commandParser from "./parser.js";
+
+function getRandomIntInclusive(min, max) {
+    const minCeiled = Math.ceil(min);
+    const maxFloored = Math.floor(max);
+    return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+}
+
+
+let currentDirectory = "/";
 const terminalConfig = {
-    prompt: "$Visitor@JamesWestheadPortfolio > $ ~/",
-    typingSpeed: getRandomIntInclusive(20, 70), // ms per character
-    linePause: getRandomIntInclusive(500, 1500),   // ms before next line
+    prompt: `$Visitor@JamesWestheadPortfolio > $ ~${currentDirectory}`,
+    typingSpeed: 20, // ms per character
+    linePause: 30,   // ms before next line
     sections: [
         {
             type: "welcome",
@@ -17,26 +25,17 @@ const terminalConfig = {
             type: "skills",
             content: "Skills: JavaScript, React, Node.js, Python, CSS, HTML"
         },
-        {
-            type: "contact",
-            content: "Contact: james@example.com | GitHub: @jameswesthead"
-        },
+
         {
             type: "help",
             content: "Explore my page using the terminal! Type 'help' to see a list of commands."
         }
     ]
-
 };
+
 
 const terminalContainer = document.getElementById("terminal-container");
 
-
-function getRandomIntInclusive(min, max) {
-    const minCeiled = Math.ceil(min);
-    const maxFloored = Math.floor(max);
-    return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
-}
 
 class TerminalAnimator {
     constructor(container, config) {
@@ -48,6 +47,7 @@ class TerminalAnimator {
         this.skipInstruction = document.getElementById('skip-instruction');
     }
 
+    // Type text into an element character by character
     async typeText(element, text) {
         element.textContent = '';
         this.isTyping = true;
@@ -141,6 +141,9 @@ class TerminalAnimator {
             cursor.classList.add('idle');
         }
 
+
+
+
         // Reset typing state
         this.isTyping = false;
     }
@@ -172,8 +175,16 @@ class TerminalAnimator {
 function addInput(container) {
     const inputElement = document.createElement("div");
     inputElement.classList.add("terminal-input");
-    inputElement.innerHTML = `<span class="terminal-prompt">${terminalConfig.prompt}<input type="text" class="terminal-input-field" autofocus /></span><span class="terminal-cursor idle">|</span>`;
+    inputElement.innerHTML = `<span class="terminal-prompt">${terminalConfig.prompt}<input type="text" class="terminal-input-field" autofocus /></span><span class="terminal-cursor idle"></span>`;
     container.appendChild(inputElement);
+}
+
+function addElement(className, content, terminalContainer) {
+    const element = document.createElement("div");
+    element.classList.add(className);
+    element.innerHTML = content;
+    terminalContainer.appendChild(element);
+    return element;
 }
 
 // Initialize and start the terminal animation
@@ -183,17 +194,28 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add skip functionality
     const skipInstruction = document.getElementById('skip-instruction');
 
-    // Skip on Enter key
+    // Handle key entry
     document.addEventListener('keydown', (e) => {
+
+        // IF animation is typing, skip it on Enter
         if (e.key === 'Enter' && animator.isTyping) {
             e.preventDefault();
             animator.skip();
         }
-        else if (e.key === 'Enter') {
+
+        // If the enter key is pressed and not typing, process command
+        else if (e.key === 'Enter' && !animator.isTyping) {
             const inputField = document.querySelector('.terminal-input-field');
             if (inputField) {
-                console.log(commandParser(inputField.value, inputField));
-                inputField.value = "";
+                var res = commandParser(inputField);
+                const inputFieldDiv = document.querySelector('.terminal-input');
+                console.log(res)
+                inputFieldDiv.remove();
+                addElement('terminal-section', terminalConfig.prompt + " " + inputField.value, terminalContainer);
+                addElement('terminal-section', res ? res : '', terminalContainer);
+                addInput(terminalContainer);
+                // Scroll to bottom
+                terminalContainer.scrollTop = terminalContainer.scrollHeight;
             }
         }
         else {
