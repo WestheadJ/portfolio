@@ -1,5 +1,6 @@
 import React from "react";
 import { Github, Linkedin, Mail, MapPin } from "lucide-react";
+import me from "../assets/photos/me.webp";
 
 export default function Hero() {
     return (
@@ -34,7 +35,7 @@ export default function Hero() {
                 <div className="w-1/2 flex justify-center">
                     <div className="border-2 border-zinc-800 rounded-lg p-3 shadow-lg">
                         <div className="border-2 border-zinc-800 rounded-lg p-3 shadow-lg">
-                            <img src="/assets/photos/IMG_6764.webp" alt="James Westhead graduation headshot" className="rounded-lg shadow-lg  mx-auto max-h-80 grayscale hover:grayscale-0" />
+                            <img src={me} alt="James Westhead graduation headshot" className="rounded-lg shadow-lg  mx-auto max-h-80 grayscale hover:grayscale-0" />
                         </div>
                     </div>
                 </div>
