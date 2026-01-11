@@ -14,8 +14,10 @@ export default function PortfolioView() {
 
 
                 </div>
-                <div className="flex w-full items-center justify-center text-center">
-                    <p className="w-[75ch]">Hello there! I am James, and I recently graduated from Sheffield Hallam University. I have had a strong passion for building application that solve real world problems and control complex systems seeing watch my Dad work from home doing Embedded Systems Engineering. </p>
+                <div className="flex flex-col w-full items-center justify-center text-center">
+                    <p className="w-[75ch] mt-8 text-muted-foreground leading-relaxed   ">Hello there! I am James, and I recently graduated from Sheffield Hallam University.
+                        I have had a strong passion for building full-stack applications with a focus on the backend.  </p>
+                    <p className="w-[75ch] mt-8 text-muted-foreground leading-relaxed">Comfortable working in project teams, working with steakholders, including client-facing intelligence mapping tool built for Raytheon as a part of a University module.</p>
                 </div>
             </section>
             <section id="projects">
