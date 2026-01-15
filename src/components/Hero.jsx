@@ -12,7 +12,7 @@ export default function Hero() {
                     <p className="font-extralight italic">Software Engineer</p>
                     <h1 className="text-5xl font-bold underline underline-offset-[8px] ">   James Westhead    </h1>
                     <p className="text-lg max-w-2xl">
-                        Recent Graduate BEng Software Engineer with a passion for building projects across the full stack and exploring new languages, frameworks, and libraries.
+                        Recent Graduate BEng Software Engineer <span className="italic text-sm">(Summer 2025)</span> with a passion for building projects across the full stack and exploring new languages, frameworks, and libraries.
                     </p>
 
                     <div className="flex w-full max-w-md justify-between">

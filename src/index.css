@@ -14,3 +14,10 @@ body {
     -webkit-text-fill-color: transparent;
 
 }
+
+.card-tech {
+    border: #d4d4d4 1px solid;
+    font-weight: lighter;
+    padding: 4px;
+    margin: 0 5px;
+}
