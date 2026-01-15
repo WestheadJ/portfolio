@@ -7,7 +7,7 @@ export default function App() {
     const [terminalMode, setTerminalMode] = useState(false);
 
     return (
-        <div className="min-h-screen f bg-neutral-950 text-stone-400">
+        <div className="min-h-screen f bg-neutral-950 text-rose-50">
             <Nav />
             <main className="">{terminalMode ? <Terminal /> : <PortfolioView />}</main>
         </div>
