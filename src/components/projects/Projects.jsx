@@ -56,7 +56,13 @@ export default function Projects() {
                         <a href="/projects/apple-music-spotify-converter">
                             <div className="flex justify-between mb-2">
                                 <div>
-                                    <h3 className="text-2xl font-bold">Apple Music to Spotify</h3>
+                                    <h3 className="relative inline-block text-2xl font-bold
+  after:absolute after:left-0 after:-bottom-1
+  after:h-[2px] after:w-0
+  after:bg-amber-100
+  after:transition-all after:duration-300
+  group-hover:after:w-full
+">Apple Music to Spotify</h3>
                                     <p className="italic text-gray-300">Python Tool</p>
                                 </div>
                                 <ExternalLink className="w-6 h-6" />
@@ -81,8 +87,14 @@ export default function Projects() {
                         <a href="/projects/exception-analysis-tool">
                             <div className="flex justify-between mb-2">
                                 <div>
-                                    <h3 className="text-2xl font-bold">Exception Analysis Tool</h3>
-                                    <p className="italic text-gray-300">Final Year Project – C# CLI</p>
+                                    <h3 className="relative inline-block text-2xl font-bold
+  after:absolute after:left-0 after:-bottom-1
+  after:h-[2px] after:w-0
+  after:bg-amber-100
+  after:transition-all after:duration-300
+  group-hover:after:w-full
+">Exception Analysis Tool</h3>
+                                    <p className="italic text-gray-300">Final Year Project - C# CLI</p>
                                 </div>
                                 <ExternalLink className="w-6 h-6" />
                             </div>
@@ -105,7 +117,13 @@ export default function Projects() {
                         <a href="/projects/raytheon-map-tool">
                             <div className="flex justify-between mb-2">
                                 <div>
-                                    <h3 className="text-2xl font-bold">Raytheon Map Intelligence</h3>
+                                    <h3 className="relative inline-block text-2xl font-bold
+  after:absolute after:left-0 after:-bottom-1
+  after:h-[2px] after:w-0
+  after:bg-amber-100
+  after:transition-all after:duration-300
+  group-hover:after:w-full
+">Raytheon Map Intelligence</h3>
                                     <p className="italic text-gray-300">University Client Project</p>
                                 </div>
                                 <ExternalLink className="w-6 h-6" />
@@ -126,8 +144,33 @@ export default function Projects() {
                     </div>
 
                     {/* Placeholder */}
-                    <div className="w-full max-w-md mx-auto p-4 border rounded">
-                        Project 4
+                    <div className="group w-full max-w-md mx-auto p-4 border rounded hover:border-amber-100 hover:shadow-md hover:scale-[1.02] transition-transform duration-200">
+                        <a href="/projects/raytheon-map-tool">
+                            <div className="flex justify-between mb-2">
+                                <div>
+                                    <h3 className="relative inline-block text-2xl font-bold
+  after:absolute after:left-0 after:-bottom-1
+  after:h-[2px] after:w-0
+  after:bg-amber-100
+  after:transition-all after:duration-300
+  group-hover:after:w-full
+">93FT Job Technical Test - Dakota Hotels</h3>
+                                    <p className="italic text-gray-300">Web development UI job application</p>
+                                </div>
+                                <ExternalLink className="w-6 h-6" />
+                            </div>
+
+                            <p className="mb-3">
+                                A front-end showcase of my skills from a design given to me!
+                            </p>
+
+                            <div className="flex gap-2">
+                                <RiJavascriptFill className="w-7 h-7 text-yellow-300" />
+                                <RiSvelteFill className="w-7 h-7 text-orange-500" />
+                                <span className="text-xs p-1 border">Tailwind</span>
+                                <span className="text-xs p-1 border">MapLibre</span>
+                            </div>
+                        </a>
                     </div>
 
                 </div>
