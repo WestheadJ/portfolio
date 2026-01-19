@@ -4,7 +4,7 @@ import me from "../assets/photos/me.webp";
 
 export default function Hero() {
     return (
-        <section className="min-h-screen flex items-center justify-center w-full px-4 md:px-0">
+        <section className="min-h-screen flex items-center justify-center w-full px-4 md:px-0 md:mt-2 sm:mt-10">
             <div className="max-w-6xl flex flex-col md:flex-row items-center md:items-start">
 
                 {/* Left text section */}
