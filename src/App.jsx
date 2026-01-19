@@ -8,7 +8,6 @@ export default function App() {
 
     return (
         <div className="min-h-screen f bg-neutral-950 text-rose-50">
-            <Nav />
             <main className="">{terminalMode ? <Terminal /> : <PortfolioView />}</main>
         </div>
     );

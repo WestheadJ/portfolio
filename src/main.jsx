@@ -1,11 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import { BrowserRouter, Route, Routes, } from "react-router";
 import "./index.css";
+import Nav from "./components/Nav";
+import { BrowserRouter, Route, Routes, } from "react-router";
+import Sales_To_Stocks from "./components/projects/Sales-To-Stocks";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
-        <BrowserRouter><Routes><Route path="/" element={<App />} /></Routes></BrowserRouter>
+        <Nav />
+        <BrowserRouter><Routes><Route path="/" element={<App />} />
+            <Route path="/projects/sales-to-stocks" element={<Sales_To_Stocks />} />
+        </Routes></BrowserRouter>
     </React.StrictMode>
 );

@@ -6,7 +6,7 @@ import { RiJavascriptFill, RiSvelteFill } from "react-icons/ri";
 import { FaHtml5, FaRaspberryPi, FaCss3Alt, FaFigma } from "react-icons/fa";
 import { SiArduino, SiNetlify, SiTailwindcss } from "react-icons/si";
 import { RiTailwindCssFill } from "react-icons/ri";
-
+import { Link, NavLink } from "react-router";
 
 
 export default function Projects() {
@@ -23,7 +23,7 @@ export default function Projects() {
                         title="Click for more information..."
                         className="group w-full max-w-md p-4 border border-solid rounded hover:border-amber-100 hover:shadow-md hover:scale-[1.02] transition-transform duration-200"
                     >
-                        <a href="/projects/apple-music-spotify-converter">
+                        <NavLink to="/projects/sales-to-stocks">
                             <div className="flex justify-between gap-2 mb-2">
                                 <div>
                                     <h3 className="
@@ -55,7 +55,7 @@ export default function Projects() {
                                 <span className="text-xs p-1 border">Pandas</span>
                                 <span className="text-xs p-1 border">Spectre Console</span>
                             </div>
-                        </a>
+                        </NavLink>
                     </div>
                 </div>
 
