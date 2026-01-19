@@ -45,7 +45,7 @@ export default function PortfolioView() {
                 </div>
                 <a
                     href={mypdf}
-                    download
+                    download="jameswesthead-cv.pdf"
                     aria-label="Download James Westhead CV"
                     className="inline-flex items-center px-6 py-3 bg-amber-100 text-black font-semibold rounded-lg shadow hover:bg-amber-200 transition-colors duration-200"
                 >
