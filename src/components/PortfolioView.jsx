@@ -3,7 +3,7 @@ import Hero from "./Hero";
 import Projects from "./projects/Projects"
 import { Linkedin } from "lucide-react";
 import { Mail } from "lucide-react";
-import { pdf } from "../assets/pdfs/CV_James_Westhead.pdf"
+import pdf from "../assets/pdfs/CV_James_Westhead.pdf"
 
 export default function PortfolioView() {
     return (
