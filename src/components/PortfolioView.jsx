@@ -3,6 +3,7 @@ import Hero from "./Hero";
 import Projects from "./projects/Projects"
 import { Linkedin } from "lucide-react";
 import { Mail } from "lucide-react";
+import { pdf } from "../assets/pdfs/CV_James_Westhead.pdf"
 
 export default function PortfolioView() {
     return (
@@ -43,7 +44,7 @@ export default function PortfolioView() {
                     <span className="absolute px-16 font-medium text-heading -translate-x-1/2 bg-neutral-950 left-1/2"><p className="text-xl">CV/Resume</p></span>
                 </div>
                 <a
-                    href="/assets/CV_James_Westhead.pdf"
+                    href={pdf}
                     download
                     aria-label="Download James Westhead CV"
                     className="inline-flex items-center px-6 py-3 bg-amber-100 text-black font-semibold rounded-lg shadow hover:bg-amber-200 transition-colors duration-200"
