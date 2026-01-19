@@ -18,10 +18,13 @@ export default function PortfolioView() {
                 </div>
                 <div className="flex flex-col w-full items-center justify-center text-center">
                     <div className="max-w-[71ch] mt-8 text-muted-foreground leading-relaxed">
-                        <p >Hello there! I am James, and I recently graduated from Sheffield Hallam University with a 2:1 in Software Engineering. I'm passionate about building projects that combine creativity and functionality.   </p>
+                        <p >Hello there! I am James, and I recently graduated from Sheffield Hallam University with a 2:1 in Software Engineering. I'm passionate about building projects that combine creativity and functionality.  </p>
                         <p>With a focus using <span className="bg-gray-800 text-yellow-500 rounded-lg p-[2px] pr-0 font-extralight" >JavaScript </span>with frameworks like <span className="bg-gray-800 text-cyan-500 rounded-lg p-[2px] pr-0 font-extralight" >React.Js</span>  and <span className="bg-gray-800 text-blue-600 rounded-lg p-[2px] pr-0 font-extralight" >{"Python"}</span> for projects
                             or exploring  <span className="bg-gray-800 text-purple-500 rounded-lg p-[2px] pr-0 font-extralight" >{"C#"}</span> and <span className="bg-gray-800 text-orange-600 rounded-lg p-[2px] pr-0 font-extralight" >SvelteKit.</span></p>
                         <p>I enjoy working in teams and bringing ideas to life. like a client-facing intelligence mapping tool I developed for Raytheon during university. I'm always up for learning new skills, experimenting with frameworks, and turning complex problems into elegant solutions.</p>
+                        <p>I'd have to say my love of programming would stem from primary school IT lessons, secondary school IT lessons, however much more of it was looking at my Father who is an embedded systems and micro controller software engineer. It got me into thinking about what I can do and what I could build, so I signed up for GCSE computer science, to A Level Computer Science, to my BEng Software Engineering degree. </p>
+                        <p>I speradically build projects, ideas that would help me from every day to day, or little tasks to help me learn and better my understanding of the langauges I use</p>
+                        <p>Other than that, I am a big fan of the gym, climbing and music!</p>
                     </div>
                 </div>
                 <div className="flex flex-col w-full items-center justify-center text-center">
