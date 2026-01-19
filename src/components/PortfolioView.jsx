@@ -1,6 +1,8 @@
 import React from "react";
 import Hero from "./Hero";
 import Projects from "./projects/Projects"
+import { Linkedin } from "lucide-react";
+import { Mail } from "lucide-react";
 
 export default function PortfolioView() {
     return (
@@ -28,12 +30,46 @@ export default function PortfolioView() {
                 </div>
             </section>
             <section id="projects" >
+                <div className="inline-flex items-center justify-center w-full">
+                    <hr className="w-[60%] h-px my-8 bg-white-100 border-1" />
+                    <span className="absolute px-16 font-medium text-heading -translate-x-1/2 bg-neutral-950 left-1/2"><p className="text-xl">PROJECTS</p></span>
+                </div>
                 <Projects />
             </section>
 
+            <section id="CV" className="flex flex-col items-center justify-center w-full">
+                <div className="inline-flex items-center justify-center w-full">
+                    <hr className="w-[60%] h-px my-8 bg-white-100 border-1" />
+                    <span className="absolute px-16 font-medium text-heading -translate-x-1/2 bg-neutral-950 left-1/2"><p className="text-xl">CV/Resume</p></span>
+                </div>
+                <a
+                    href="../../CV_James_Westhead.pdf"
+                    download
+                    aria-label="Download James Westhead CV"
+                    className="inline-flex items-center px-6 py-3 bg-amber-100 text-black font-semibold rounded-lg shadow hover:bg-amber-200 transition-colors duration-200"
+                >
+                    Download CV
+                    <svg
+                        className="w-5 h-5 ml-2"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 12v8m0 0l-4-4m4 4l4-4M12 4v8" />
+                    </svg>
+                </a>
+            </section>
+
             <section id="contact">
-                <h2 className="text-3xl font-bold mb-2">Contact</h2>
-                <p>Email: james@example.com</p>
+                <div className="inline-flex items-center justify-center w-full">
+                    <hr className="w-[60%] h-px my-8 bg-white-100 border-1" />
+                    <span className="absolute px-16 font-medium text-heading -translate-x-1/2 bg-neutral-950 left-1/2"><p className="text-xl">CONTACT</p></span>
+                </div>
+                <div className="flex w-full justify-center text-center">
+                    <p className="text-center w-[70ch] text-lg"> Want to work together? Talk about my projects? Send me an email <a href="mailto:james_westhead@outlook.com?subject=Query" className="inline-block hover:border-amber-100 hover:shadow-md  underline"><Mail className="w-4 h-4 inline-block mr-1" />: james_westhead@outlook.com </a> or message me on <a href="" className="underline hover:border-amber-100 hover:shadow-md "><Linkedin className="w-4 h-4 inline-block mr-1" />: LinkedIn</a> </p>
+                </div>
             </section>
         </div>
     );
