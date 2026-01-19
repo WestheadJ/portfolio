@@ -44,7 +44,7 @@ export default function PortfolioView() {
                     <span className="absolute px-16 font-medium text-heading -translate-x-1/2 bg-neutral-950 left-1/2"><p className="text-xl">CV/Resume</p></span>
                 </div>
                 <a
-                    href={pdf}
+                    href={mypdf}
                     download
                     aria-label="Download James Westhead CV"
                     className="inline-flex items-center px-6 py-3 bg-amber-100 text-black font-semibold rounded-lg shadow hover:bg-amber-200 transition-colors duration-200"
