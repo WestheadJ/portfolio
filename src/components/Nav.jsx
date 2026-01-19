@@ -3,11 +3,9 @@ import "../index.css"
 
 export default function Nav() {
     const navItems = [
-        { label: "About", href: "#about" },
-        { label: "Skills", href: "#skills" },
-        { label: "Projects", href: "#projects" },
-        { label: "Experience", href: "#experience" },
-        { label: "Contact", href: "#contact" },
+        { label: "About", href: "/#about" },
+        { label: "Projects", href: "/#projects" },
+        { label: "Contact", href: "/#contact" },
     ];
 
     return (
