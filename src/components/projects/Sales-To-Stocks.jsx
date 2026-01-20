@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Sales_To_Stocks() {
     return (
-        <div className='pt-20 pl-8 text-white flex flex-col w-full justify-center leading-7'>
+        <div className='pt-20 px-8 text-white flex flex-col w-full justify-center leading-7'>
             <section id='title'>
                 <h1 className='text-4xl font-bold  pb-2'>Sales & Stocks Analysis Tool</h1>
                 <h3 className='text-lg font-thin italic'>Built to solve a real operational problem at my workplace</h3>
