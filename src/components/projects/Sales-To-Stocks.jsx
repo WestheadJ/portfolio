@@ -11,7 +11,7 @@ export default function Sales_To_Stocks() {
                     <h3 className='text-lg'><span className='font-bold'>Tech Stack: </span><span>Python | CLI | DuckDB | Pandas </span></h3>
                 </section>
             </section>
-            <section id="the-problem" className='w-[71ch] pt-12 '>
+            <section id="the-problem" className='w-[71ch] sm:w-fit pt-12 '>
                 <h2 className='text-2xl pb-2'>The Problem</h2>
                 <p>My workplace needed better visibility into product performance and inventory planning. Sales reports exist, but extracting actionable insights is difficult because:</p>
                 <ul className='list-disc list-inside pl-2 py-3'>
