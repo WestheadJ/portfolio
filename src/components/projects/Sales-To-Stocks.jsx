@@ -11,7 +11,7 @@ export default function Sales_To_Stocks() {
                     <h3 className='text-lg'><span className='font-bold'>Tech Stack: </span><span>Python | CLI | DuckDB | Pandas </span></h3>
                 </section>
             </section>
-            <section id="the-problem" className='w-[71ch] sm:w-[41ch] pt-12 '>
+            <section id="the-problem" className='max-w-[71ch]  pt-12 '>
                 <h2 className='text-2xl pb-2'>The Problem</h2>
                 <p>My workplace needed better visibility into product performance and inventory planning. Sales reports exist, but extracting actionable insights is difficult because:</p>
                 <ul className='list-disc list-inside pl-2 py-3'>
@@ -22,7 +22,7 @@ export default function Sales_To_Stocks() {
                 </ul>
                 <p>Without this visibility, we're missing opportunities to optimize stock ordering, identify top performers, plan for seasonal demand (Christmas, summer), and improve operational efficiency at the bar.</p>
             </section>
-            <section id="why-this-matters" className="w-[71ch] pt-12">
+            <section id="why-this-matters" className="max-w-[71ch] pt-12">
                 <h2 className='text-2xl pb-2'>Why This Matters</h2>
                 <p>Previously at my last place when I started this and even now currently at my current place, decisions about what to stock, what to promote, and how to prepare for busy periods are largely based on intuition rather than data. This tool will enable:</p>
                 <ul className='list-disc list-inside pl-2 py-3'>
