@@ -1,38 +1,179 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 export default function Sales_To_Stocks() {
-    return (
-        <div className='pt-20 px-8 text-white flex flex-col w-full justify-center leading-7'>
-            <section id='title'>
-                <h1 className='text-4xl font-bold  pb-2'>Sales & Stocks Analysis Tool</h1>
-                <h3 className='text-lg font-thin italic'>Built to solve a real operational problem at my workplace</h3>
-                <section className='pt-2'>
-                    <h3 className='text-lg'><span className='font-bold'>Status: </span><span className='text-green-500 '>Active Development</span></h3>
-                    <h3 className='text-lg'><span className='font-bold'>Tech Stack: </span><span>Python | CLI | DuckDB | Pandas </span></h3>
-                </section>
-            </section>
-            <section id="the-problem" className='max-w-[71ch]  pt-12 '>
-                <h2 className='text-2xl pb-2'>The Problem</h2>
-                <p>My workplace needed better visibility into product performance and inventory planning. Sales reports exist, but extracting actionable insights is difficult because:</p>
-                <ul className='list-disc list-inside pl-2 py-3'>
-                    <li>Products have complex compositions (multiple ingredients, varying portion sizes)</li>
-                    <li>Different yield rates across items make calculating actual usage complicated</li>
-                    <li>Reports don't account for wastage</li>
-                    <li>Data format from reports isn't structured for analysis</li>
-                </ul>
-                <p>Without this visibility, we're missing opportunities to optimize stock ordering, identify top performers, plan for seasonal demand (Christmas, summer), and improve operational efficiency at the bar.</p>
-            </section>
-            <section id="why-this-matters" className="max-w-[71ch] pt-12">
-                <h2 className='text-2xl pb-2'>Why This Matters</h2>
-                <p>Previously at my last place when I started this and even now currently at my current place, decisions about what to stock, what to promote, and how to prepare for busy periods are largely based on intuition rather than data. This tool will enable:</p>
-                <ul className='list-disc list-inside pl-2 py-3'>
-                    <li>Identification of underperforming products for promotional targeting</li>
-                    <li>Prevention of stock-outs during peak periods</li>
-                    <li>Data-driven bar layout optimization for service efficiency</li>
-                    <li>Like-for-like performance comparisons across different time periods</li>
+    const [activeSection, setActiveSection] = useState('overview')
+    const scrollContainerRef = useRef(null)
+    const contentRefs = useRef({})
 
+    const sections = [
+        { id: 'overview', label: 'Overview' },
+        { id: 'technical-approach', label: 'Technical Approach' },
+        { id: 'current-status', label: 'Current Status' },
+        { id: 'what-learned', label: 'What I Have Learned' },
+        { id: 'planned-impact', label: 'Planned Impact' }
+    ]
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollContainer = scrollContainerRef.current
+            if (!scrollContainer) return
+
+            const scrollTop = scrollContainer.scrollTop
+            const scrollHeight = scrollContainer.scrollHeight - scrollContainer.clientHeight
+            const scrollPercent = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0
+
+            // Divide the page into equal segments based on number of sections
+            const segmentSize = 100 / sections.length
+            const currentSegment = Math.floor(scrollPercent / segmentSize)
+            const sectionIndex = Math.min(currentSegment, sections.length - 1)
+
+            setActiveSection(sections[sectionIndex].id)
+        }
+
+        const scrollContainer = scrollContainerRef.current
+        if (scrollContainer) {
+            handleScroll() // Run once on mount
+            scrollContainer.addEventListener('scroll', handleScroll)
+            return () => scrollContainer.removeEventListener('scroll', handleScroll)
+        }
+    }, [])
+
+    const scrollToSection = (sectionId) => {
+        const section = contentRefs.current[sectionId]
+        const container = scrollContainerRef.current
+        if (section && container) {
+            const offsetTop = section.offsetTop - 100
+            container.scrollTo({ top: offsetTop, behavior: 'smooth' })
+        }
+    }
+
+    const currentIndex = sections.findIndex(s => s.id === activeSection)
+    const canGoPrev = currentIndex > 0
+    const canGoNext = currentIndex < sections.length - 1
+
+    const goToPrev = () => {
+        if (canGoPrev) scrollToSection(sections[currentIndex - 1].id)
+    }
+
+    const goToNext = () => {
+        if (canGoNext) scrollToSection(sections[currentIndex + 1].id)
+    }
+
+    return (
+        <div className='w-full h-screen pt-20 flex flex-col lg:flex-row text-white overflow-hidden'>
+            {/* Mobile horizontal scrollable nav */}
+            <div className='lg:hidden w-full border-b border-gray-700 px-4 py-3'>
+                <div className='flex items-center justify-between mb-2'>
+                    <h2 className='font-bold text-sm'>Contents</h2>
+                    <div className='flex gap-2'>
+                        <button
+                            onClick={goToPrev}
+                            disabled={!canGoPrev}
+                            className='p-1 hover:bg-gray-700 rounded disabled:opacity-30 disabled:cursor-not-allowed'
+                        >
+                            <ChevronLeft size={20} />
+                        </button>
+                        <button
+                            onClick={goToNext}
+                            disabled={!canGoNext}
+                            className='p-1 hover:bg-gray-700 rounded disabled:opacity-30 disabled:cursor-not-allowed'
+                        >
+                            <ChevronRight size={20} />
+                        </button>
+                    </div>
+                </div>
+                <div className='flex gap-2 overflow-x-auto pb-2 scrollbar-hide'>
+                    {sections.map((section) => (
+                        <button
+                            key={section.id}
+                            onClick={() => scrollToSection(section.id)}
+                            className={`px-4 py-2 rounded whitespace-nowrap text-sm transition-colors ${activeSection === section.id
+                                ? 'bg-amber-100 text-black'
+                                : 'bg-gray-800 hover:bg-gray-700'
+                                }`}
+                        >
+                            {section.label}
+                        </button>
+                    ))}
+                </div>
+            </div>
+
+            {/* Desktop sidebar */}
+            <div className='hidden lg:block w-[20%] h-full overflow-y-auto px-8 border-r border-gray-700'>
+                <h1 className='font-bold text-xl mb-4'>Contents:</h1>
+                <ul className='space-y-2'>
+                    {sections.map((section) => (
+                        <li
+                            key={section.id}
+                            onClick={() => scrollToSection(section.id)}
+                            className={`cursor-pointer transition-colors ${activeSection === section.id
+                                ? 'text-amber-100 font-semibold'
+                                : 'hover:text-amber-100'
+                                }`}
+                        >
+                            {section.label}
+                        </li>
+                    ))}
                 </ul>
-            </section>
+            </div>
+
+            {/* Content area - THIS IS THE KEY CHANGE: added ref={scrollContainerRef} */}
+            <div ref={scrollContainerRef} className='w-full lg:w-[80%] h-full overflow-y-auto px-4 lg:px-8'>
+                <div className='flex-col w-full justify-center leading-7'>
+                    <section id='title'>
+                        <h1 className='text-3xl lg:text-4xl font-bold pb-2'>Sales & Stocks Analysis Tool</h1>
+                        <h3 className='text-base lg:text-lg font-thin italic'>Built to solve a real operational problem at my workplace</h3>
+                        <section className='pt-2'>
+                            <h3 className='text-base lg:text-lg'><span className='font-bold'>Status: </span><span className='text-green-500'>Active Development</span></h3>
+                            <h3 className='text-base lg:text-lg'><span className='font-bold'>Tech Stack: </span><span>Python | CLI | DuckDB | Pandas </span></h3>
+                        </section>
+                    </section>
+                    <br />
+                    <div className='max-w-[72ch]'>
+                        {/* ADDED ref on each section */}
+                        <section ref={el => contentRefs.current['overview'] = el} id='overview'>
+                            <h2 className='text-xl lg:text-2xl font-bold mb-3'>Overview</h2>
+                            <p>Built to solve inventory and sales visibility problems at my workplace. Sales reports exist but don't easily answer questions like: What sells well? What should we stock more of? How do we prepare for Christmas or summer rushes?</p>
+                            <p>Products have complex compositions (multiple ingredients, different portion sizes, varying yields), making it hard to track actual usage from raw sales data.</p>
+                        </section>
+                        <br />
+                        <section ref={el => contentRefs.current['technical-approach'] = el} id='technical-approach'>
+                            <h2 className='text-xl lg:text-2xl font-bold mb-3'>Technical Approach</h2>
+                            <p>Python + DuckDB - Python for data processing and CLI. DuckDB because it's embedded, fast for analytics, and handles time-series aggregations efficiently.</p>
+                            <p>Key Challenge: Data Modeling - Started with a schema that looked good on paper but didn't fit the actual report structure. Products have hierarchical relationships (product → ingredients → portions → yields) that my initial design didn't capture properly. Currently refactoring the schema before building analytics features.</p>
+                            <p>Parsing Complexity - Sales reports have inconsistent formatting. Building robust extraction logic to handle edge cases and normalize the data.</p>
+                        </section>
+                        <br />
+
+                        <section ref={el => contentRefs.current['current-status'] = el} id='current-status'>
+                            <h2 className='text-xl lg:text-2xl font-bold mb-3'>Current Status</h2>
+                            <ul className='list-none space-y-2'>
+                                <li>✅ Completed: CLI framework and report import working on old database schema</li>
+                                <li>🔄 Currently Working on: Redesigning database schema for product-ingredient relationships</li>
+                                <li>📋 Next: Analytics queries (top sellers, period comparisons, stock predictions)</li>
+                            </ul>
+                        </section>
+                        <br />
+
+                        <section ref={el => contentRefs.current['what-learned'] = el} id='what-learned'>
+                            <h2 className='text-xl lg:text-2xl font-bold mb-3'>What I Have Learned So Far</h2>
+                            <p>Should've spent more time understanding the data structure before designing the schema. The refactor is teaching me the value of upfront data exploration. Also learned when columnar databases shine - DuckDB's aggregation performance validates the choice.</p>
+                            <p>Scope creep hit hard when I realized how complex the product relationships were. Focusing now on core features first, wastage tracking later.</p>
+                        </section>
+                        <br />
+                        <section ref={el => contentRefs.current['planned-impact'] = el} id='planned-impact'>
+                            <h2 className='text-xl lg:text-2xl font-bold mb-3'>Planned Impact</h2>
+                            <ul className='list-disc pl-6 space-y-2'>
+                                <li>Identify what to promote and what's underperforming</li>
+                                <li>Prevent stock-outs during peak periods</li>
+                                <li>Enable data-driven decisions instead of gut feel</li>
+                            </ul>
+                        </section>
+                        <div className='h-20'></div>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
