@@ -5,6 +5,8 @@ export default function Sales_To_Stocks() {
     const [activeSection, setActiveSection] = useState('overview')
     const scrollContainerRef = useRef(null)
     const contentRefs = useRef({})
+    const isManualClick = useRef(false)
+    const scrollTimeout = useRef(null)
 
     const sections = [
         { id: 'overview', label: 'Overview' },
@@ -16,6 +18,19 @@ export default function Sales_To_Stocks() {
 
     useEffect(() => {
         const handleScroll = () => {
+            // Clear any existing timeout
+            if (scrollTimeout.current) {
+                clearTimeout(scrollTimeout.current)
+            }
+
+            // Wait 150ms after last scroll event before resuming auto-tracking
+            scrollTimeout.current = setTimeout(() => {
+                isManualClick.current = false
+            }, 150)
+
+            // Don't update active section if user just clicked
+            if (isManualClick.current) return
+
             const scrollContainer = scrollContainerRef.current
             if (!scrollContainer) return
 
@@ -35,15 +50,26 @@ export default function Sales_To_Stocks() {
         if (scrollContainer) {
             handleScroll() // Run once on mount
             scrollContainer.addEventListener('scroll', handleScroll)
-            return () => scrollContainer.removeEventListener('scroll', handleScroll)
+            return () => {
+                scrollContainer.removeEventListener('scroll', handleScroll)
+                if (scrollTimeout.current) {
+                    clearTimeout(scrollTimeout.current)
+                }
+            }
         }
     }, [])
 
     const scrollToSection = (sectionId) => {
+        // Set flag to ignore scroll tracking temporarily
+        isManualClick.current = true
+
+        // Immediately update active section
+        setActiveSection(sectionId)
+
         const section = contentRefs.current[sectionId]
         const container = scrollContainerRef.current
         if (section && container) {
-            const offsetTop = section.offsetTop - 100
+            const offsetTop = section.offsetTop - 200
             container.scrollTo({ top: offsetTop, behavior: 'smooth' })
         }
     }
@@ -132,13 +158,13 @@ export default function Sales_To_Stocks() {
                     <br />
                     <div className='max-w-[72ch]'>
                         {/* ADDED ref on each section */}
-                        <section ref={el => contentRefs.current['overview'] = el} id='overview'>
+                        <section ref={el => contentRefs.current['overview'] = el} id='overview' className='mt-8'>
                             <h2 className='text-xl lg:text-2xl font-bold mb-3'>Overview</h2>
                             <p>Built to solve inventory and sales visibility problems at my workplace. Sales reports exist but don't easily answer questions like: What sells well? What should we stock more of? How do we prepare for Christmas or summer rushes?</p>
                             <p>Products have complex compositions (multiple ingredients, different portion sizes, varying yields), making it hard to track actual usage from raw sales data.</p>
                         </section>
                         <br />
-                        <section ref={el => contentRefs.current['technical-approach'] = el} id='technical-approach'>
+                        <section ref={el => contentRefs.current['technical-approach'] = el} id='technical-approach' className='mt-8'>
                             <h2 className='text-xl lg:text-2xl font-bold mb-3'>Technical Approach</h2>
                             <p>Python + DuckDB - Python for data processing and CLI. DuckDB because it's embedded, fast for analytics, and handles time-series aggregations efficiently.</p>
                             <p>Key Challenge: Data Modeling - Started with a schema that looked good on paper but didn't fit the actual report structure. Products have hierarchical relationships (product → ingredients → portions → yields) that my initial design didn't capture properly. Currently refactoring the schema before building analytics features.</p>
@@ -146,7 +172,7 @@ export default function Sales_To_Stocks() {
                         </section>
                         <br />
 
-                        <section ref={el => contentRefs.current['current-status'] = el} id='current-status'>
+                        <section ref={el => contentRefs.current['current-status'] = el} id='current-status' className='mt-8'>
                             <h2 className='text-xl lg:text-2xl font-bold mb-3'>Current Status</h2>
                             <ul className='list-none space-y-2'>
                                 <li>✅ Completed: CLI framework and report import working on old database schema</li>
@@ -156,13 +182,13 @@ export default function Sales_To_Stocks() {
                         </section>
                         <br />
 
-                        <section ref={el => contentRefs.current['what-learned'] = el} id='what-learned'>
+                        <section ref={el => contentRefs.current['what-learned'] = el} id='what-learned' className='mt-8'>
                             <h2 className='text-xl lg:text-2xl font-bold mb-3'>What I Have Learned So Far</h2>
                             <p>Should've spent more time understanding the data structure before designing the schema. The refactor is teaching me the value of upfront data exploration. Also learned when columnar databases shine - DuckDB's aggregation performance validates the choice.</p>
                             <p>Scope creep hit hard when I realized how complex the product relationships were. Focusing now on core features first, wastage tracking later.</p>
                         </section>
                         <br />
-                        <section ref={el => contentRefs.current['planned-impact'] = el} id='planned-impact'>
+                        <section ref={el => contentRefs.current['planned-impact'] = el} id='planned-impact' className='mt-8'>
                             <h2 className='text-xl lg:text-2xl font-bold mb-3'>Planned Impact</h2>
                             <ul className='list-disc pl-6 space-y-2'>
                                 <li>Identify what to promote and what's underperforming</li>

@@ -12,7 +12,6 @@ export default function Nav() {
         <header>
             <nav className="fixed top-0 left-0 right-0 z-50 text-rose-50 bg-zinc-900 backdrop-blur-sm border-b border-gray-700 shadow-md bg-opacity-85">
                 <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-3  ">
-                    {/* Logo */}
                     <a href="/" className="text-lg font-extralight italic">
                         JW
                     </a>
