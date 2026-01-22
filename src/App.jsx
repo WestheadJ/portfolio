@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Nav from "./components/Nav";
-import PortfolioView from "./components/PortfolioView";
-import Terminal from "./components/Terminal";
+import Nav from "@components/Nav";
+import PortfolioView from "@components/PortfolioView";
+import Terminal from "@components/Terminal";
 
 export default function App() {
     const [terminalMode, setTerminalMode] = useState(false);
