@@ -4,6 +4,7 @@ export function useScrollNavigation(sections) {
     const [activeSection, setActiveSection] = useState(sections[0]?.id || '')
     const scrollContainerRef = useRef(null)
     const contentRefs = useRef({})
+    const navRefs = useRef({})
     const isManualClick = useRef(false)
     const scrollTimeout = useRef(null)
 
@@ -50,6 +51,18 @@ export function useScrollNavigation(sections) {
         }
     }, [sections])
 
+    // Auto-scroll horizontal nav to active item
+    useEffect(() => {
+        const activeNavItem = navRefs.current[activeSection]
+        if (activeNavItem && activeNavItem.parentElement) {
+            activeNavItem.scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+                inline: 'center'
+            })
+        }
+    }, [activeSection])
+
     const scrollToSection = (sectionId) => {
         // Set flag to ignore scroll tracking temporarily
         isManualClick.current = true
@@ -81,6 +94,7 @@ export function useScrollNavigation(sections) {
         activeSection,
         scrollContainerRef,
         contentRefs,
+        navRefs,
         scrollToSection,
         goToPrev,
         goToNext,
