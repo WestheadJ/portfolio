@@ -1,7 +1,7 @@
 import React from "react";
 import { Github, Linkedin, Mail, MapPin } from "lucide-react";
-import me from "../assets/photos/me.webp";
-import mypdf from '../assets/pdfs/mypdf.pdf'
+import me from "@assets/photos/me.webp";
+import mypdf from '@assets/pdfs/mypdf.pdf'
 
 export default function Hero() {
     return (
@@ -37,29 +37,30 @@ export default function Hero() {
                     </div>
 
                     {/* Location */}
-                    <div className="flex items-center gap-2 justify-center sm:justify-center mt-4 text-sm sm:text-base">
+                    <div className="flex items-center gap-2 justify-center  mt-4 text-sm sm:text-base">
                         <MapPin />
                         <p>Oldham, UK · Open to relocation/remote working</p>
                     </div>
-
-                    <a
-                        href={mypdf}
-                        download="jameswesthead-cv.pdf"
-                        aria-label="Download James Westhead CV"
-                        className="inline-flex items-center px-6 py-3 bg-amber-100 text-black font-semibold rounded-lg shadow hover:bg-amber-200 transition-colors duration-200"
-                    >
-                        Download CV
-                        <svg
-                            className="w-5 h-5 ml-2"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
+                    <div className="flex w-full justify-center items-center">
+                        <a
+                            href={mypdf}
+                            download="jameswesthead-cv.pdf"
+                            aria-label="Download James Westhead CV"
+                            className="inline-flex items-center px-6 py-3 bg-amber-100 text-black font-semibold rounded-lg shadow hover:bg-amber-200 transition-colors duration-200 "
                         >
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 12v8m0 0l-4-4m4 4l4-4M12 4v8" />
-                        </svg>
-                    </a>
+                            Download CV
+                            <svg
+                                className="w-5 h-5 ml-2"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 12v8m0 0l-4-4m4 4l4-4M12 4v8" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
 
                 {/* Right image section */}
