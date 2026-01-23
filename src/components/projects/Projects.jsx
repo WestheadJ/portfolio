@@ -20,7 +20,7 @@ export default function Projects() {
 
                 <div className="grid grid-cols-1 place-items-center gap-y-6 mb-12">
                     <div
-                        title="Click for more information..."
+                        title="Click to see more"
                         className="group w-full max-w-md p-4 border border-solid rounded hover:border-amber-100 hover:shadow-md hover:scale-[1.02] transition-transform duration-200"
                     >
                         <NavLink to="/projects/sales-to-stocks">

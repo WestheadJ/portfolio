@@ -3,7 +3,7 @@ import Hero from "./Hero";
 import Projects from "./projects/Projects"
 import { Linkedin } from "lucide-react";
 import { Mail } from "lucide-react";
-import mypdf from "../assets/pdfs/mypdf.pdf"
+import mypdf from "@assets/pdfs/mypdf.pdf"
 
 export default function PortfolioView() {
     return (
@@ -19,11 +19,14 @@ export default function PortfolioView() {
                 <div className="flex flex-col w-full items-center justify-center text-center">
                     <div className="max-w-[71ch] mt-8 text-muted-foreground leading-relaxed">
                         <p >Hello there! I am James, and I recently graduated from Sheffield Hallam University with a 2:1 in Software Engineering. I'm passionate about building projects that combine creativity and functionality.  </p>
+                        <br />
                         <p>With a focus using <span className="bg-gray-800 text-yellow-500 rounded-lg p-[2px] pr-0 font-extralight" >JavaScript </span>with frameworks like <span className="bg-gray-800 text-cyan-500 rounded-lg p-[2px] pr-0 font-extralight" >React.Js</span>  and <span className="bg-gray-800 text-blue-600 rounded-lg p-[2px] pr-0 font-extralight" >{"Python"}</span> for projects
                             or exploring  <span className="bg-gray-800 text-purple-500 rounded-lg p-[2px] pr-0 font-extralight" >{"C#"}</span> and <span className="bg-gray-800 text-orange-600 rounded-lg p-[2px] pr-0 font-extralight" >SvelteKit.</span></p>
                         <p>I enjoy working in teams and bringing ideas to life. like a client-facing intelligence mapping tool I developed for Raytheon during university. I'm always up for learning new skills, experimenting with frameworks, and turning complex problems into elegant solutions.</p>
+                        <br />
                         <p>I'd have to say my love of programming would stem from primary school IT lessons, secondary school IT lessons, however much more of it was looking at my Father who is an embedded systems and micro controller software engineer. It got me into thinking about what I can do and what I could build, so I signed up for GCSE computer science, to A Level Computer Science, to my BEng Software Engineering degree. </p>
-                        <p>I speradically build projects, ideas that would help me from every day to day, or little tasks to help me learn and better my understanding of the langauges I use</p>
+                        <br />
+                        <p>I sporadically build projects, ideas that would help me from every day to day, or little tasks to help me learn and better my understanding of the langauges I use</p>
                         <p>Other than that, I am a big fan of the gym, climbing and music!</p>
                     </div>
                 </div>
@@ -47,6 +50,7 @@ export default function PortfolioView() {
                     <span className="absolute px-16 font-medium text-heading -translate-x-1/2 bg-neutral-950 left-1/2"><p className="text-xl">CV/Resume</p></span>
                 </div>
                 <a
+                    title="Download my CV"
                     href={mypdf}
                     download="jameswesthead-cv.pdf"
                     aria-label="Download James Westhead CV"

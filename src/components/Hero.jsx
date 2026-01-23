@@ -22,15 +22,19 @@ export default function Hero() {
 
                     {/* Social links */}
                     <div className="flex  sm:flex-row w-full justify-center gap-8 sm:gap-4 mt-4">
-                        <div className="flex items-center gap-2 hover:scale-110 hover:cursor-pointer transition-transform duration-200">
-                            <Mail className="text-blue-500" />
-                            <p className="bg-blue-500 bg-clip-text text-transparent">Email</p>
+                        <div title='Go to email me!' className="flex items-center gap-2 hover:scale-110 hover:cursor-pointer transition-transform duration-200">
+                            <a className="flex gap-2" href="mailto:james_westhead@outlook.com">
+                                <Mail className="text-blue-500" />
+                                <p className="bg-blue-500 bg-clip-text text-transparent">Email</p>
+                            </a>
                         </div>
-                        <div className="flex items-center gap-2 hover:scale-110 hover:cursor-pointer transition-transform duration-200">
-                            <Github className="text-green-500" />
-                            <p className="bg-gradient-to-r from-green-500 via-purple-500 to-purple-600 bg-clip-text text-transparent">GitHub</p>
+                        <div title="View my GitHub!" className="flex items-center gap-2 hover:scale-110 hover:cursor-pointer transition-transform duration-200">
+                            <a className="flex gap-2" href="https://github.com/WestheadJ">
+                                <Github className="text-green-500" />
+                                <p className="bg-gradient-to-r from-green-500 via-purple-500 to-purple-600 bg-clip-text text-transparent">GitHub</p>
+                            </a>
                         </div>
-                        <div className="flex items-center gap-2 hover:scale-110 hover:cursor-pointer transition-transform duration-200">
+                        <div title="Check out my LinkedIn" className="flex items-center gap-2 hover:scale-110 hover:cursor-pointer transition-transform duration-200">
                             <Linkedin className="text-blue-600" />
                             <p className="text-blue-600">LinkedIn</p>
                         </div>
@@ -41,7 +45,7 @@ export default function Hero() {
                         <MapPin />
                         <p>Oldham, UK · Open to relocation/remote working</p>
                     </div>
-                    <div className="flex w-full justify-center items-center">
+                    <div title="Download my CV" className="flex w-full justify-center items-center">
                         <a
                             href={mypdf}
                             download="jameswesthead-cv.pdf"
