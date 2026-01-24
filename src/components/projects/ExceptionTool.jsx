@@ -100,7 +100,7 @@ export default function ExceptionChecker() {
                                     href='https://github.com/WestheadJ/Development_Project'
                                     target='_blank'
                                     rel='noopener noreferrer'
-                                    className='text-blue-400 hover:text-blue-300 underline'
+                                    className='hover:text-amber-400 text-blue-200 transition-colors" hover:text--300 underline'
                                 >
                                     GitHub Repository
                                 </a>
@@ -109,7 +109,7 @@ export default function ExceptionChecker() {
                                     href='https://youtu.be/epOWvI7N98E'
                                     target='_blank'
                                     rel='noopener noreferrer'
-                                    className='text-blue-400 hover:text-blue-300 underline'
+                                    className='hover:text-amber-400 text-blue-200 transition-colors" hover:text--300 underline'
                                 >
                                     Demo Video
                                 </a>
