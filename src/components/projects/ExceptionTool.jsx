@@ -86,7 +86,7 @@ export default function ExceptionChecker() {
             </div>
 
             {/* Content area */}
-            <div ref={scrollContainerRef} className='w-full lg:w-[80%] h-full overflow-y-auto px-4 lg:px-8 pt-6'>
+            <div ref={scrollContainerRef} className='w-full lg:w-[80%] h-full overflow-y-auto px-4 lg:px-8 pt-8'>
                 <div className='flex-col w-full justify-center leading-7'>
                     <section id='title'>
                         <h1 className='text-3xl lg:text-4xl font-bold pb-2'>ExceptionChecker: Finding Hidden Errors in C# Code</h1>

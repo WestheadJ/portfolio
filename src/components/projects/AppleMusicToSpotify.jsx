@@ -25,9 +25,9 @@ export default function AppleMusicToSpotify() {
     } = useScrollNavigation(sections)
 
     return (
-        <div className='w-full h-screen pt-20 flex flex-col lg:flex-row text-white overflow-hidden'>
+        <div className='w-full h-screen pt-16 flex flex-col lg:flex-row text-white overflow-hidden'>
             {/* Mobile horizontal scrollable nav */}
-            <div className='lg:hidden w-full border-b border-gray-700 px-4 py-3'>
+            <div className='lg:hidden w-full border-b border-gray-700 px-4 '>
                 <div className='flex items-center justify-between mb-2'>
                     <h2 className='font-bold text-sm'>Contents</h2>
                     <div className='flex gap-2'>
@@ -84,7 +84,7 @@ export default function AppleMusicToSpotify() {
             </div>
 
             {/* Content area */}
-            <div ref={scrollContainerRef} className='w-full lg:w-[80%] h-full overflow-y-auto px-4 lg:px-8'>
+            <div ref={scrollContainerRef} className='w-full lg:w-[80%] h-full overflow-y-auto px-4 lg:px-8 pt-8'>
                 <div className='flex-col w-full justify-center leading-7'>
                     <section id='title'>
                         <h1 className='text-3xl lg:text-4xl font-bold pb-2'>Apple Music to Spotify Playlist Converter</h1>

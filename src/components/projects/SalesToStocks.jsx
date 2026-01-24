@@ -26,7 +26,7 @@ export default function Sales_To_Stocks() {
     return (
         <div className='w-full h-screen pt-20 flex flex-col lg:flex-row text-white overflow-hidden'>
             {/* Mobile horizontal scrollable nav */}
-            <div className='lg:hidden w-full border-b border-gray-700 px-4 py-3'>
+            <div className='lg:hidden w-full border-b border-gray-700 px-4 '>
                 <div className='flex items-center justify-between mb-2'>
                     <h2 className='font-bold text-sm'>Contents</h2>
                     <div className='flex gap-2'>

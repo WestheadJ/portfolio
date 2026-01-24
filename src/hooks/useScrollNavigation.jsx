@@ -7,6 +7,15 @@ export function useScrollNavigation(sections) {
     const navRefs = useRef({})
     const isManualClick = useRef(false)
     const scrollTimeout = useRef(null)
+    const hasMountedRef = useRef(false)
+
+    // Set initial active section on mount
+    useEffect(() => {
+        if (!hasMountedRef.current && sections[0]?.id) {
+            setActiveSection(sections[0].id)
+            hasMountedRef.current = true
+        }
+    }, [sections])
 
     useEffect(() => {
         const handleScroll = () => {
