@@ -10,7 +10,8 @@ export default defineConfig({
             '@hooks': path.resolve(__dirname, './src/hooks'),
             '@components': path.resolve(__dirname, './src/components'),
             '@assets': path.resolve(__dirname, './src/assets'),
-            '@handlers': path.resolve(__dirname, './src/handlers')
+            '@handlers': path.resolve(__dirname, './src/handlers'),
+            '@projects': path.resolve(__dirname, "./components/projects")
         },
     },
 })

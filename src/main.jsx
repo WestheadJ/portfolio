@@ -17,7 +17,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <BrowserRouter> <HashScrollHandler /><Routes><Route path="/" element={<App />} />
             <Route path="/projects/sales-to-stocks" element={<Sales_To_Stocks />} />
             <Route path="/projects/apple-music-to-spotify" element={<AppleMusicToSpotify />} />
-            <Route path="/projects/exception-tool" element={<ExceptionTool />} />
+            <Route path="/projects/exception-analysis-tool" element={<ExceptionTool />} />
         </Routes></BrowserRouter>
     </React.StrictMode>
 );
