@@ -100,7 +100,7 @@ export default function Projects() {
 
                     {/* Exception Analysis Tool */}
                     <div className="group w-full max-w-md mx-auto p-4 border rounded hover:border-amber-100 hover:shadow-md hover:scale-[1.02] transition-transform duration-200">
-                        <a href="/projects/exception-analysis-tool">
+                        <NavLink to="/projects/exception-analysis-tool">
                             <div className="flex justify-between mb-2">
                                 <div>
                                     <h3 className="
@@ -128,12 +128,12 @@ export default function Projects() {
                                 <span className="text-xs p-1 border">.NET</span>
                                 <span className="text-xs p-1 border">Reflection</span>
                             </div>
-                        </a>
+                        </NavLink>
                     </div>
 
                     {/* Raytheon Project */}
                     <div className="group w-full max-w-md mx-auto p-4 border rounded hover:border-amber-100 hover:shadow-md hover:scale-[1.02] transition-transform duration-200">
-                        <a href="/projects/raytheon-map-tool">
+                        <NavLink to="/projects/raytheon-intelligence-tool">
                             <div className="flex justify-between mb-2">
                                 <div>
                                     <h3 className="
@@ -167,7 +167,7 @@ export default function Projects() {
 
 
                             </div>
-                        </a>
+                        </NavLink>
                     </div>
 
                     <div className="group w-full max-w-md mx-auto p-4 border rounded hover:border-amber-100 hover:shadow-md hover:scale-[1.02] transition-transform duration-200">

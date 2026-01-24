@@ -2,7 +2,7 @@ import React from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useScrollNavigation } from '@hooks/useScrollNavigation' // adjust path as needed
 
-export default function Sales_To_Stocks() {
+export default function SalesToStocks() {
     const sections = [
         { id: 'overview', label: 'Overview' },
         { id: 'technical-approach', label: 'Technical Approach' },

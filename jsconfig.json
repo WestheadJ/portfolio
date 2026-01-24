@@ -12,10 +12,10 @@
                 "src/components/*"
             ],
             "@handlers/*": [
-                "src/handlers"
+                "src/handlers/*"
             ],
             "@assets/*": [
-                "src/assets"
+                "src/assets/*"
             ],
             "@projects/*": [
                 "src/components/projects/*"

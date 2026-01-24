@@ -4,10 +4,11 @@ import App from "./App";
 import "./index.css";
 import Nav from "./components/Nav";
 import { BrowserRouter, Route, Routes, } from "react-router";
-import Sales_To_Stocks from "@components/projects/SalesToStocks";
+import SalesToStocks from "@projects/SalesToStocks";
 import HashScrollHandler from "@handlers/hashScrollHandler"
-import AppleMusicToSpotify from "@components/projects/AppleMusicToSpotify";
-import ExceptionTool from "@components/projects/ExceptionTool";
+import AppleMusicToSpotify from "@projects/AppleMusicToSpotify";
+import ExceptionTool from "@projects/ExceptionTool";
+import RaytheonMapIntelligence from "@projects/Raytheon";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
@@ -15,9 +16,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
 
         <BrowserRouter> <HashScrollHandler /><Routes><Route path="/" element={<App />} />
-            <Route path="/projects/sales-to-stocks" element={<Sales_To_Stocks />} />
+            <Route path="/projects/sales-to-stocks" element={<SalesToStocks />} />
             <Route path="/projects/apple-music-to-spotify" element={<AppleMusicToSpotify />} />
             <Route path="/projects/exception-analysis-tool" element={<ExceptionTool />} />
+            <Route path="/projects/raytheon-intelligence-tool" element={<RaytheonMapIntelligence />} />
         </Routes></BrowserRouter>
-    </React.StrictMode>
+    </React.StrictMode >
 );
