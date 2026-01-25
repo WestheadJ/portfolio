@@ -10,6 +10,7 @@ import AppleMusicToSpotify from "@projects/AppleMusicToSpotify";
 import ExceptionTool from "@projects/ExceptionTool";
 import RaytheonMapIntelligence from "@projects/Raytheon";
 import DakotaHotels from "@projects/DakotaHotels";
+import FolderWizard from "@projects/FolderWizard";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
@@ -22,6 +23,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             <Route path="/projects/exception-analysis-tool" element={<ExceptionTool />} />
             <Route path="/projects/raytheon-intelligence-tool" element={<RaytheonMapIntelligence />} />
             <Route path="/projects/dakota-hotels" element={<DakotaHotels />} />
+            <Route path="/projects/folder-wizard" element={<FolderWizard />} />
         </Routes></BrowserRouter>
     </React.StrictMode >
 );

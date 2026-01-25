@@ -204,7 +204,7 @@ export default function Projects() {
                     </div>
 
                     <div className="group w-full max-w-md mx-auto p-4 border rounded hover:border-amber-100 hover:shadow-md hover:scale-[1.02] transition-transform duration-200">
-                        <a href="/projects/raytheon-map-tool">
+                        <NavLink to="/projects/folder-wizard">
                             <div className="flex justify-between mb-2">
                                 <div>
                                     <h3 className="
@@ -232,7 +232,7 @@ export default function Projects() {
                                 <span className="text-xs p-1 border">WinForms</span>
                                 <span className="text-xs p-1 border">Directories</span>
                             </div>
-                        </a>
+                        </NavLink>
                     </div>
 
                     <div className="group w-full max-w-md mx-auto p-4 border rounded hover:border-amber-100 hover:shadow-md hover:scale-[1.02] transition-transform duration-200">
