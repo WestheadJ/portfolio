@@ -97,7 +97,7 @@ export default function RaytheonMapIntelligence() {
                             Raytheon Map Intelligence Tool
                         </h1>
                         <h3 className='text-base lg:text-lg font-thin italic'>
-                            Client-Facing Group Project – Spatial Data & Decision Support
+                            Client-Facing Group Project - Spatial Data & Decision Support
                         </h3>
 
                         <section className='pt-2'>
@@ -114,7 +114,7 @@ export default function RaytheonMapIntelligence() {
                             <h3 className='text-base lg:text-lg'>
                                 <span className='font-bold'>Links: </span>
                                 <a
-                                    href='https://github.com/isaac238/ITSE_GROUP'
+                                    href="https://github.com/isaac238/PSP-RaytheonA"
                                     target='_blank'
                                     rel='noopener noreferrer'
                                     className='hover:text-amber-400 text-blue-200 underline transition-colors'
@@ -289,7 +289,7 @@ export default function RaytheonMapIntelligence() {
                             <h2 className='text-xl lg:text-2xl font-bold mb-3'>Reflection</h2>
                             <p className='mb-3'>
                                 This project felt much closer to industry work than most university assignments.
-                                There was no single “correct” answer, only trade-offs and informed decisions.
+                                There was no single "correct" answer, only trade-offs and informed decisions.
                             </p>
                             <p>
                                 It reinforced the idea that good software is not just about code, but about

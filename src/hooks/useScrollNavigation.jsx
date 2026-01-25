@@ -7,15 +7,6 @@ export function useScrollNavigation(sections) {
     const navRefs = useRef({})
     const isManualClick = useRef(false)
     const scrollTimeout = useRef(null)
-    const hasMountedRef = useRef(false)
-
-    // Set initial active section on mount
-    useEffect(() => {
-        if (!hasMountedRef.current && sections[0]?.id) {
-            setActiveSection(sections[0].id)
-            hasMountedRef.current = true
-        }
-    }, [sections])
 
     useEffect(() => {
         const handleScroll = () => {
@@ -37,19 +28,51 @@ export function useScrollNavigation(sections) {
 
             const scrollTop = scrollContainer.scrollTop
             const scrollHeight = scrollContainer.scrollHeight - scrollContainer.clientHeight
-            const scrollPercent = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0
 
-            // Divide the page into equal segments based on number of sections
-            const segmentSize = 100 / sections.length
-            const currentSegment = Math.floor(scrollPercent / segmentSize)
-            const sectionIndex = Math.min(currentSegment, sections.length - 1)
+            // Special case: at the very top, always show first section
+            if (scrollTop < 50) {
+                setActiveSection(sections[0].id)
+                return
+            }
 
-            setActiveSection(sections[sectionIndex].id)
+            // Special case: at the very bottom, always show last section
+            if (scrollTop >= scrollHeight - 50) {
+                setActiveSection(sections[sections.length - 1].id)
+                return
+            }
+
+            // Find the section whose top is closest to the viewport top (with offset)
+            // This ensures even short sections get highlighted
+            const viewportTop = 150 // offset for when section becomes "active"
+            let closestSection = sections[0].id
+            let closestDistance = Infinity
+
+            sections.forEach(section => {
+                const element = contentRefs.current[section.id]
+                if (!element) return
+
+                const rect = element.getBoundingClientRect()
+                const containerRect = scrollContainer.getBoundingClientRect()
+
+                // Distance from section top to our activation point
+                const distance = Math.abs(rect.top - containerRect.top - viewportTop)
+
+                // Only consider sections that are currently in or entering the viewport
+                if (rect.top <= containerRect.bottom && rect.bottom >= containerRect.top) {
+                    if (distance < closestDistance) {
+                        closestDistance = distance
+                        closestSection = section.id
+                    }
+                }
+            })
+
+            setActiveSection(closestSection)
         }
 
         const scrollContainer = scrollContainerRef.current
         if (scrollContainer) {
-            handleScroll() // Run once on mount
+            // Run immediately on mount to set initial state
+            handleScroll()
             scrollContainer.addEventListener('scroll', handleScroll)
             return () => {
                 scrollContainer.removeEventListener('scroll', handleScroll)

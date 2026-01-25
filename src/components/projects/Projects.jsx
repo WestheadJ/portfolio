@@ -171,7 +171,7 @@ export default function Projects() {
                     </div>
 
                     <div className="group w-full max-w-md mx-auto p-4 border rounded hover:border-amber-100 hover:shadow-md hover:scale-[1.02] transition-transform duration-200">
-                        <a href="/projects/raytheon-map-tool">
+                        <NavLink href="/projects/dakota-hotels">
                             <div className="flex justify-between mb-2">
                                 <div>
                                     <h3 className="
@@ -200,7 +200,7 @@ export default function Projects() {
                                 <FaFigma className="w-7 h-7 text-purple-500" />
 
                             </div>
-                        </a>
+                        </NavLink>
                     </div>
 
                     <div className="group w-full max-w-md mx-auto p-4 border rounded hover:border-amber-100 hover:shadow-md hover:scale-[1.02] transition-transform duration-200">
