@@ -43,7 +43,7 @@ export default function Hero() {
                     {/* Location */}
                     <div className="flex items-center gap-2 justify-center  mt-4 text-sm sm:text-base">
                         <MapPin />
-                        <p>Oldham, UK · Open to relocation/remote working</p>
+                        <p>Oldham, UK · Open to in-office | hybrid | remote  </p>
                     </div>
                     <div title="Download my CV" className="flex w-full justify-center items-center">
                         <a

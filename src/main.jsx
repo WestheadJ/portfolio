@@ -11,6 +11,7 @@ import ExceptionTool from "@projects/ExceptionTool";
 import RaytheonMapIntelligence from "@projects/Raytheon";
 import DakotaHotels from "@projects/DakotaHotels";
 import FolderWizard from "@projects/FolderWizard";
+import VexDeskDefence from "@projects/Robot"
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
@@ -24,6 +25,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             <Route path="/projects/raytheon-intelligence-tool" element={<RaytheonMapIntelligence />} />
             <Route path="/projects/dakota-hotels" element={<DakotaHotels />} />
             <Route path="/projects/folder-wizard" element={<FolderWizard />} />
+            <Route path="/projects/vex-desk-defence" element={<VexDeskDefence />} />
         </Routes></BrowserRouter>
     </React.StrictMode >
 );
