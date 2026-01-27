@@ -115,14 +115,17 @@ export default function SalesToStocks() {
                         <section ref={el => contentRefs.current['technical-approach'] = el} id='technical-approach'>
                             <h2 className='text-xl lg:text-2xl font-bold mb-3'>Technical Approach</h2>
                             <p>Python + DuckDB - Python for data processing and CLI. DuckDB because it's embedded, fast for analytics, and handles time-series aggregations efficiently.</p>
-                            <p>Key Challenge: Data Modeling - Started with a schema that looked good on paper but didn't fit the actual report structure. Products have hierarchical relationships (product → ingredients → portions → yields) that my initial design didn't capture properly. Currently refactoring the schema before building analytics features.</p>
-                            <p>Parsing Complexity - Sales reports have inconsistent formatting. Building robust extraction logic to handle edge cases and normalize the data.</p>
+                            <h3 className='text-lg font-bold' >Key Challenges: </h3>
+                            <ul className='list-none space-y-2 pl-7'>
+                                <li><span className='font-bold'>Data Modeling</span> - Started with a schema that looked good on paper but didn't fit the actual report structure. Products have hierarchical relationships (product → ingredients → portions → yields) that my initial design didn't capture properly. Currently refactoring the schema before building analytics features.</li>
+                                <li><span className='font-bold'>Parsing Complexity</span> - Sales reports have inconsistent formatting. Building robust extraction logic to handle edge cases and normalize the data.</li>
+                            </ul>
                         </section>
                         <br />
 
                         <section ref={el => contentRefs.current['current-status'] = el} id='current-status'>
                             <h2 className='text-xl lg:text-2xl font-bold mb-3'>Current Status</h2>
-                            <ul className='list-none space-y-2'>
+                            <ul className='list-none space-y-2 pl-1'>
                                 <li>✅ Completed: CLI framework and report import working on old database schema</li>
                                 <li>🔄 Currently Working on: Redesigning database schema for product-ingredient relationships</li>
                                 <li>📋 Next: Analytics queries (top sellers, period comparisons, stock predictions)</li>
