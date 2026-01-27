@@ -17,7 +17,7 @@ export default function Nav() {
                     </a>
 
                     {/* Nav Links */}
-                    <div className="hidden sm:flex items-center gap-6">
+                    <div className=" items-center flex gap-6">
                         {navItems.map((item) => (
                             <a
                                 key={item.href}
@@ -29,10 +29,7 @@ export default function Nav() {
                         ))}
                     </div>
 
-                    {/* Optional: Mobile menu button for very small screens */}
-                    <div className="sm:hidden">
-                        {/* Could be a hamburger icon here */}
-                    </div>
+
                 </div>
             </nav>
         </header>

@@ -17,7 +17,7 @@ export default function Hero() {
                         James Westhead
                     </h1>
                     <p className="text-base sm:text-lg md:text-lg max-w-xl mx-auto md:mx-0 text-center md:text-left">
-                        Recent Graduate BEng Software Engineer <span className="italic text-sm">(Summer 2025)</span> with a passion for building projects across the full stack and exploring new languages, frameworks, and libraries.
+                        Recent graduate in BEng Software Engineering <span className="italic text-sm">(Summer 2025)</span> with a passion for building projects across the full stack and exploring new languages, frameworks, and libraries.
                     </p>
 
                     {/* Social links */}
